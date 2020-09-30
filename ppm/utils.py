@@ -47,10 +47,18 @@ def submit_timesheet(timesheet):
                 __update_timeentry(timesheet_id, timeentry['_internalId'], request)
 
         __update_timesheet_last_sync(timesheet['id'])
-        return "OK"
+
+        result = {
+            "error": False,
+            "message": "OK"
+        }
     except Exception as e:
-        print(str(e))
-        return str(e)
+        result = {
+            "error": True,
+            "message": str(e)
+        }
+    finally:
+        return result
 
 
 def __calculate_duration(start_date, end_date):
@@ -192,7 +200,7 @@ def __generate_request_for_update_timeentry(timesheet_date, task_id, duration, a
     segments = actuals['segmentList']['segments']
     for segment in segments:
         if segment['start'] == timesheet_date:
-            segment['value'] += duration
+            segment['value'] = duration
 
     request = {"taskId": task_id, "actuals": actuals}
     return json.dumps(request)

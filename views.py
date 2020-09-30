@@ -1,4 +1,4 @@
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, request, jsonify, Response, abort
 from flask_cors import CORS, cross_origin
 import controllers
 
@@ -16,4 +16,8 @@ def hello_world():
 @cross_origin()
 def submit_timesheet():
     timesheet = request.json
-    return controllers.submit_timesheet(timesheet)
+    result = controllers.submit_timesheet(timesheet)
+    if result.error:
+        abort(Response(result.message, 403))
+    else:
+        return result.message

@@ -5,9 +5,9 @@ import requests
 from flask import jsonify
 from requests.auth import HTTPBasicAuth
 
-ppm_username = 'fernando.defalco'
-ppm_password = 'Atrperro1.'
-ppm_url = 'http://10.0.0.9/ppm/rest/v1/'
+ppm_username = ''
+ppm_password = ''
+ppm_url = 'http://xxxxxx/ppm/rest/v1/'
 
 
 def submit_timesheet(timesheet):

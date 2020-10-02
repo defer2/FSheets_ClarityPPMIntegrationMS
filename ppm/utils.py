@@ -4,10 +4,13 @@ from datetime import datetime, timedelta
 import requests
 from flask import jsonify
 from requests.auth import HTTPBasicAuth
+import configparser
+config = configparser.ConfigParser()
+config.read("config.ini")
 
-ppm_username = 'fernando.defalco'
-ppm_password = 'Atrperro1.'
-ppm_url = 'http://10.0.0.9/ppm/rest/v1/'
+ppm_username = config.get("PPM", "PPM_USERNAME")
+ppm_password = config.get("PPM", "PPM_PASSWORD")
+ppm_url = config.get("PPM", "PPM_URL")
 
 
 def submit_timesheet(timesheet):

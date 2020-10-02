@@ -17,7 +17,7 @@ def hello_world():
 def submit_timesheet():
     timesheet = request.json
     result = controllers.submit_timesheet(timesheet)
-    if result.error:
-        abort(Response(result.message, 403))
+    if result['error']:
+        abort(Response(result['message'], 403))
     else:
-        return result.message
+        return result['message']

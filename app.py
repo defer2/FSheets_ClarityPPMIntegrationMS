@@ -17,7 +17,9 @@ def create_app():
     return app_clarityppm_integration
 
 
+app = create_app()
+cors = CORS(app)
+
+
 if __name__ == '__main__':
-    app = create_app()
-    cors = CORS(app)
     app.run(host='192.168.0.50', port=5013)

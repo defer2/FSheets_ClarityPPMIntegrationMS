@@ -1,9 +1,5 @@
 import math
 from datetime import datetime
-
-import requests
-from flask import jsonify
-
 from ppm import utils
 
 

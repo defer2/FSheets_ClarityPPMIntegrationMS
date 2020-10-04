@@ -1,12 +1,14 @@
 import json
 import math
+import os
 from datetime import datetime, timedelta
 import requests
 from flask import jsonify
 from requests.auth import HTTPBasicAuth
 import configparser
 config = configparser.ConfigParser()
-config.read("config.ini")
+config_path = os.path.join('conf', 'config.ini')
+config.read(config_path)
 
 ppm_username = config.get("PPM", "PPM_USERNAME")
 ppm_password = config.get("PPM", "PPM_PASSWORD")

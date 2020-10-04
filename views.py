@@ -1,4 +1,4 @@
-from flask import Blueprint, request, jsonify, Response, abort
+from flask import Blueprint, request, Response, abort
 from flask_cors import CORS, cross_origin
 import controllers
 
